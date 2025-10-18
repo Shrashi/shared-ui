@@ -1,0 +1,55 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "elements",
+  "projectType": "library",
+  "root": "packages/elements",
+  "sourceRoot": "packages/elements/src",
+
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "configFile": "packages/elements/vite.config.js",
+        "tsConfig": "packages/elements/tsconfig.lib.json"
+      }
+    },
+
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "configDir": "packages/elements/.storybook",
+        "port": 6006
+      }
+
+    },
+
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "options": {
+        "configDir": "packages/elements/.storybook"
+      }
+
+    }
+  },
+
+  "assets": [
+    { "input": "packages/elements", "glob": "README.md", "output": "." },
+    { "input": "packages/elements", "glob": "LICENSE",   "output": "." }
+  ],
+
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": ["{projectRoot}/dist"],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  },
+
+  "targetsMetadata": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "{projectRoot}/dist"
+      }
+    }
+  }
+}
