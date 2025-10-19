@@ -18,13 +18,15 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": [
-          "nx build auth",
-          "node packages/auth/scripts/prepare-dist.js",
-          "git subtree split --prefix packages/auth/dist -b auth-release",
-          "git push -f origin auth-release:auth-release",
-          "git branch -D auth-release || true"
-        ]
+       "commands": [
+  "nx build auth",
+  "node packages/auth/scripts/prepare-dist.js",
+  "git add packages/auth/dist -A",
+  "git commit -m \"chore(auth): update dist for release\" --no-verify || echo \"no changes\"",
+  "git subtree split --prefix packages/auth/dist -b auth-release",
+  "git push -f origin auth-release:auth-release",
+  "git branch -D auth-release || true"
+]
       }
     },
 
