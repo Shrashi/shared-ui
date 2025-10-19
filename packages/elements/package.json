@@ -1,15 +1,28 @@
 {
   "name": "@shared-ui/elements",
   "version": "0.0.1",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-   "scripts": {
-    "build": "nx build elements && node ./scripts/prepare-dist.js"
-  },
+  "private": false,
+  "type": "module",
+  "sideEffects": false,
+
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "scripts": {
+    "build": "nx build elements && node ./scripts/prepare-dist.cjs"
   }
 }

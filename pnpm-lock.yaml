@@ -194,8 +194,21 @@ importers:
       '@shared-ui/elements':
         specifier: workspace:*
         version: link:../elements
+      react:
+        specifier: ^18 || ^19
+        version: 19.0.0
+      react-dom:
+        specifier: ^18 || ^19
+        version: 19.0.0(react@19.0.0)
 
-  packages/elements: {}
+  packages/elements:
+    dependencies:
+      react:
+        specifier: ^18 || ^19
+        version: 19.0.0
+      react-dom:
+        specifier: ^18 || ^19
+        version: 19.0.0(react@19.0.0)
 
 packages:
 

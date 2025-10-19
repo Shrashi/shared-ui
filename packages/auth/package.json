@@ -1,19 +1,30 @@
 {
   "name": "@shared-ui/auth",
   "version": "0.0.1",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-   "private": false,
+  "private": false,
+  "type": "module",
+
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+
   "dependencies": {
     "@shared-ui/elements": "workspace:*"
   },
-  "scripts": {
-    "build": "nx build auth && node ./scripts/prepare-dist.js"
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
+  "scripts": {
+    "build": "nx build auth && node ./scripts/prepare-dist.cjs"
   }
 }
