@@ -1,0 +1,28 @@
+{
+  "name": "@shared-ui/auth",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "default": "./index.js"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "@shared-ui/elements": "workspace:*"
+  },
+  "sideEffects": false,
+  "files": [
+    "*",
+    "!**/*.map",
+    "!**/*.test.*",
+    "!**/*.stories.*",
+    "!**/__tests__/**"
+  ],
+  "license": "UNLICENSED"
+}
