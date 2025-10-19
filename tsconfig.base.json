@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@shared-ui/auth": ["packages/auth/src/index.ts"],
       "@shared-ui/elements": ["packages/elements/src/index.ts"]
     }
   },

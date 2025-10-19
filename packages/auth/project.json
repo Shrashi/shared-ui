@@ -1,53 +1,53 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "elements",
+  "name": "auth",
   "projectType": "library",
-  "root": "packages/elements",
-  "sourceRoot": "packages/elements/src",
+  "root": "packages/auth",
+  "sourceRoot": "packages/auth/src",
 
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
       "options": {
-        "configFile": "packages/elements/vite.config.js",
-        "tsConfig": "packages/elements/tsconfig.lib.json"
-      },
-       "release-branch": {
+        "configFile": "packages/auth/vite.config.js",
+        "tsConfig": "packages/auth/tsconfig.lib.json"
+      }
+    },
+
+    "release-branch": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "commands": [
-          "nx build elements",
-          "node packages/elements/scripts/prepare-dist.js",
-          "git subtree split --prefix packages/elements/dist -b core-ui-release",
-          "git push -f origin core-ui-release:core-ui-release",
-          "git branch -D core-ui-release || true"
+          "nx build auth",
+          "node packages/auth/scripts/prepare-dist.js",
+          "git subtree split --prefix packages/auth/dist -b auth-release",
+          "git push -f origin auth-release:auth-release",
+          "git branch -D auth-release || true"
         ]
       }
-    }
     },
 
     "storybook": {
       "executor": "@nx/storybook:storybook",
       "options": {
-        "configDir": "packages/elements/.storybook",
-        "port": 6006
+        "configDir": "packages/auth/.storybook",
+        "port": 6007
       }
-
     },
 
     "build-storybook": {
       "executor": "@nx/storybook:build",
       "options": {
-        "configDir": "packages/elements/.storybook"
+        "configDir": "packages/auth/.storybook",
+        "outputDir": "packages/auth/dist/storybook"
       }
-
     }
   },
 
   "assets": [
-    { "input": "packages/elements", "glob": "README.md", "output": "." },
-    { "input": "packages/elements", "glob": "LICENSE",   "output": "." }
+    { "input": "packages/auth", "glob": "README.md", "output": "." },
+    { "input": "packages/auth", "glob": "LICENSE",   "output": "." }
   ],
 
   "release": {

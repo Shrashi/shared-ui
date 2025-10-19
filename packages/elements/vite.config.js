@@ -69,7 +69,7 @@ export default defineConfig(() => ({
   ],
 
   build: {
-    outDir: '../../dist/packages/elements',
+    outDir: 'dist',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
