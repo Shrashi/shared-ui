@@ -1,9 +1,8 @@
 {
   "name": "@shared-ui/auth",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "type": "module",
-
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +15,6 @@
     },
     "./package.json": "./package.json"
   },
-
   "dependencies": {
     "@shared-ui/elements": "workspace:*"
   },

@@ -2,7 +2,14 @@
   "name": "@shared-ui/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+     "changeset": "changeset",
+    "version-packages": "changeset version && pnpm install -r",
+    "build:all": "nx run-many -t build --all --with-deps",
+    "release:git": "pnpm run build:all && pnpm run push-release-branches",
+    "push-release-branches": "nx run-many -t release-branch --projects=@shared-ui/auth,@shared-ui/elements --parallel=1",
+    "release:full": "pnpm run version-packages && pnpm run release:git"
+  },
   "private": true,
   "dependencies": {
     "empty": "0.10.1",
@@ -14,6 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
+    "@changesets/cli": "^2.29.7",
     "@eslint/js": "^9.8.0",
     "@nx/eslint": "21.6.5",
     "@nx/eslint-plugin": "21.6.5",

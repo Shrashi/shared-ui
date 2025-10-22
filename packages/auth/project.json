@@ -4,7 +4,7 @@
   "projectType": "library",
   "root": "packages/auth",
   "sourceRoot": "packages/auth/src",
-
+   "implicitDependencies": ["elements"],
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
@@ -20,7 +20,7 @@
         "parallel": false,
        "commands": [
   "nx build auth",
-  "node packages/auth/scripts/prepare-dist.js",
+  "node packages/auth/scripts/prepare-dist.cjs",
   "git add packages/auth/dist -A",
   "git commit -m \"chore(auth): update dist for release\" --no-verify || echo \"no changes\"",
   "git subtree split --prefix packages/auth/dist -b auth-release",

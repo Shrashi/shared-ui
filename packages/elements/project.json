@@ -11,22 +11,24 @@
       "options": {
         "configFile": "packages/elements/vite.config.js",
         "tsConfig": "packages/elements/tsconfig.lib.json"
-      },
-       "release-branch": {
+      }
+    },
+"release-branch": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": [
-          "nx build elements",
-          "node packages/elements/scripts/prepare-dist.js",
-          "git subtree split --prefix packages/elements/dist -b core-ui-release",
-          "git push -f origin core-ui-release:core-ui-release",
-          "git branch -D core-ui-release || true"
-        ]
-      }
-    }
-    },
+       "commands": [
+  "nx build elements",
+  "node packages/elements/scripts/prepare-dist.cjs",
+  "git add packages/elements/dist -A",
+  "git commit -m \"chore(elements): update dist for release\" --no-verify || echo \"no changes\"",
+  "git subtree split --prefix packages/elements/dist -b elements-release",
+  "git push -f origin elements-release:elements-release",
+  "git branch -D elements-release || true"
+]
 
+      }
+    },
     "storybook": {
       "executor": "@nx/storybook:storybook",
       "options": {
